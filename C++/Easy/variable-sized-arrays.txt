@@ -1,0 +1,33 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n, q;
+    cin >> n >> q;
+
+    vector<vector<int>> arrays(n);
+
+    for (int i = 0; i < n; ++i) {
+        int size;
+        cin >> size;
+
+        arrays[i].resize(size);
+
+        for (int j = 0; j < size; ++j) {
+            cin >> arrays[i][j];
+        }
+    }
+
+    for (int i = 0; i < q; ++i) {
+        int array_index, element_index;
+        cin >> array_index >> element_index;
+
+        cout << arrays[array_index][element_index] << endl;
+    }
+
+    return 0;
+}
