@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+// Function to convert a number to its English word representation
+string numberToWord(int n) {
+    static const string words[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    if (n >= 0 && n <= 9) {
+        return words[n];
+    } else {
+        return "Greater than 9";
+    }
+}
+
+int main()
+{
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    // Convert the number to its English word representation
+    string result = numberToWord(n);
+
+    // Output the result
+    cout << result << endl;
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+    s.erase(s.begin(), find_if(s.begin(), s.end(), [](unsigned char ch) {
+        return !isspace(ch);
+    }));
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+    s.erase(find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
+        return !isspace(ch);
+    }).base(), s.end());
+    return s;
+}
