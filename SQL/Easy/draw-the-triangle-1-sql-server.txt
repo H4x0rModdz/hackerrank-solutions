@@ -1,0 +1,8 @@
+WITH RecursiveNumbers AS (
+    SELECT 20 AS num
+    UNION ALL
+    SELECT num - 1
+    FROM RecursiveNumbers
+    WHERE num > 1
+)
+SELECT REPLICATE('* ', num) FROM RecursiveNumbers;

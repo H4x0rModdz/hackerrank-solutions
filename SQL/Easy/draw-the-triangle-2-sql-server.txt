@@ -1,0 +1,9 @@
+WITH RecursivePattern AS (
+    SELECT CAST('*' AS NVARCHAR(MAX)) AS pattern, 1 AS row_num
+    UNION ALL
+    SELECT pattern + ' *', row_num + 1
+    FROM RecursivePattern
+    WHERE row_num < 20
+)
+SELECT pattern
+FROM RecursivePattern;
